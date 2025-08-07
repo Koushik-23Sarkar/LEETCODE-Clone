@@ -1,0 +1,48 @@
+---> 1st try to figure out what type of data, you take from Users and store in the database?
+---> what type of models you wants to create for backend
+
+            // This type of information tells how you will develop your backend. 
+            // for same problem/application can use different models. depending upon what is your plan about that project.
+
+---> Prepare your " utils " as much as you can. It will help you while writing your code. You can image it like reusable functions.
+
+
+
+
+
+.gitkeep            // create a ".gitkeep" so that GIT track your folder. Because GIT track files not Folder and if you create empty folder then GIT will not track them.
+.gitIgnore
+.env.sample         // Because we should not upload   ".env" .  Manage your  ".env" file from starting. If you don't later it will be chaos.
+.prettierIgnore     // In which file I don't want to apply Prettier.
+constants.js        // Stores constants of your application.
+
+
+controllers/
+models/
+db/             // for Database connections.
+middlewares/
+routes/
+utils/         // use to create repeatedly used function means these functions are used in whole application.
+
+
+
+nodemon
+Prettier            //
+    .prettierrc 
+
+________________________________________________________________________________________________________________________________________________________________________________
+    ---> Most of the time, whenever we take any file/image/video from the User, First we store that file into the server and then upload to the 3rd party services whatever we are using for the application.
+        and check:
+             is it present into the server or not?
+             is it present in the actual 3rd party database or not? (like cloudinary) 
+
+    ---> after upload to the 3rd party database, delete that file from your server.
+________________________________________________________________________________________________________________________________________________________________________________
+    ---> Create JS File to format:
+                            (1) your Error.
+                            (2) your Responces.
+                            (3) Async functions
+
+________________________________________________________________________________________________________________________________________________________________________________
+    ---> You should also maintain status codes. 
+

@@ -1,0 +1,15 @@
+---> Write all steps, you will perform in the functions. That steps are algorithms.
+
+---> Before write your code, try to understand 
+        (1) Input format    (use Postman for it)
+        (2) Output format
+
+---> Test your application while writing code so that you will face less error and debug would be wasy.
+
+---> First focus on Feature of your application, then opimize that code.
+
+
+
+---> To Test API where, we have file,
+            you can't use "body->json". Because there is no option to send file.
+            for that, we use "body->form-data" to send file from POSTMAN.
