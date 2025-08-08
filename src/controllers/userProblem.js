@@ -159,9 +159,8 @@ const deleteProlem = async (req,res)=>{
 }
 
 const getProblemByID = async (req,res)=>{
+    console.log("Enter in the getProblemByID!");
     const {id} = req.params;
-
-    
     try{
         if(!id){
             return res.status(404).send("Id is missing!");
