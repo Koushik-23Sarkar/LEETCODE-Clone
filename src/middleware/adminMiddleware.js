@@ -3,6 +3,7 @@ const User = require('../models/user');
 const redisclient = require('../config/redis');
 
 const adminMiddleware = async (req,res,next)=>{
+    console.log("Enter in the AdminMiddleware!");
     try{
         //Is token exist or not?
         const {token}=req.cookies;  

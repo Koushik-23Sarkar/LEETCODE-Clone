@@ -75,6 +75,8 @@ const createProblem = async (req,res)=>{
 }
 
 const updateProblem = async (req,res)=>{
+    console.log("Enter in the UpdateProblem!");
+    console.log(req.body);
     const {id}=req.params;
 
     const {title,description,difficulty,tags,
