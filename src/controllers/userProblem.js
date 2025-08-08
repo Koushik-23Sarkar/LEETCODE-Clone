@@ -179,6 +179,7 @@ const getProblemByID = async (req,res)=>{
 }
 
 const getAllProblems = async (req,res)=>{   //pagenation in future
+    console.log("Enter in the getAllProblems!");
     try{
         const getProblem = await Problems.find({}).select('_id title difficulty tags');
 
