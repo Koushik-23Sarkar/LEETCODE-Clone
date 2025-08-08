@@ -139,7 +139,7 @@ const updateProblem = async (req,res)=>{
 }
 
 const deleteProlem = async (req,res)=>{
-    const {id}=res.params;
+    const {id}=req.params;
 
     try{
         if(!id){
