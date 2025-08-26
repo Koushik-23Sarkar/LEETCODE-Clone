@@ -8,13 +8,13 @@ const submitCode = async (req,res)=>{
         const problemId = req.params.id;
 
         const {code,language}=req.body;
-
+        console.log(`submit language1: ${language}`);
         if(!userId||!problemId||!code||!language){
             return res.status(400).send("some field is missing!");
         }
 
         const problem = await Problems.findById(problemId);
-
+        console.log(`problem: ${problem}`);
         //Before get the answer from judeg0, we store that submission in the database and mark as pending.
         const submissionResult = await Submission.create({
             userId,
@@ -25,10 +25,11 @@ const submitCode = async (req,res)=>{
             status:'pending',
             testCasesTotal:problem.hiddenTestCases.length,
         })
-
+        console.log(`submissionResult: ${submissionResult}`);
+        console.log(`submit language2: ${language}`);
         const languageId = getLanguageById(language);
 
-        const submission = problem.hiddenTestCases.map((testCases)=>(
+        const submission = problem.visibleTestCases.map((testCases)=>(  //hiddenTestCases
                 {
                     source_code:code,
                     language_id:languageId,
@@ -37,7 +38,7 @@ const submitCode = async (req,res)=>{
                 }
         ))
 
-        const submitResult = await submitBatch(submission);
+        const submitResult = await submitBatch(submission);     // Submit problem
         const resultToken = submitResult.map((value)=>{
             return value.token;
         })  
@@ -101,6 +102,7 @@ const runCode = async (req,res)=>{
 
         const problem = await Problems.findById(problemId);
 
+        console.log(`run language: ${language}`);
         const languageId = getLanguageById(language);
 
         const submission = problem.visibleTestCases.map((testCases)=>(
@@ -118,8 +120,12 @@ const runCode = async (req,res)=>{
         })  
         console.log("input of submitToken: \n"+resultToken);
         const testResult = await submitToken(resultToken);
-
-        res.status(200).send(testResult);
+        console.log('type Of testResult: '+ typeof testResult);
+        console.log(testResult);
+        res.status(200).send({
+            testCases: testResult,
+            success: testResult.every((tc)=>tc.status_id==3)
+        });
 
     }catch(err){
         res.status(500).send("Internet Server Error: "+err);

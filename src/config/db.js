@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 async function main() {
-    await mongoose.connect(process.env.DB_CONNECT_STRING+'/leetcode');
+    console.log(process.env.DB_CONNECT_STRING);
+    await mongoose.connect(process.env.DB_CONNECT_STRING);
 }
 
 module.exports=main;

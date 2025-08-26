@@ -47,6 +47,7 @@ const submitBatch = async (submissions) => {
 };
 
 const submitToken = async (resultToken) => {
+  console.log("Enter submitToken function!")
   const options = {
     method: "GET",
     url: process.env.JUDGE0_URL, 

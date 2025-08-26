@@ -161,11 +161,12 @@ const deleteProlem = async (req,res)=>{
 const getProblemByID = async (req,res)=>{
     console.log("Enter in the getProblemByID!");
     const {id} = req.params;
+    console.log(`id: ${id}`);
     try{
         if(!id){
             return res.status(404).send("Id is missing!");
         }
-        const getProblem = await Problems.findById(id).select('_id title description difficuty tags visibleTestCases startCode referenceSolution');
+        const getProblem = await Problems.findById(id).select('_id title description difficulty tags visibleTestCases startCode referenceSolution');
 
         if(!getProblem){
             return res.status(404).send("Problem is missing!");
@@ -197,8 +198,6 @@ const solvedAllProblemByUser = async (req,res)=>{
     try{
         // const count = req.result.problemSolved.length;
         // res.status(200).send(count);
-
-
         const userId = req.result._id;
         const user = await User.findById(userId).populate({
             path:"problemSolved",

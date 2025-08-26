@@ -246,11 +246,12 @@ const ProblemPage = () => {
     setSubmitResult(null);
     
     try {
-        const response = await axiosClient.post(`/submission/submit/${problemId}`, {
-        code:code,
+        const response = await axiosClient.post(`/submit/submit/${problemId}`, {
+        code,
         language: selectedLanguage
       });
-
+       console.log("submitResult: ");
+       console.log(response.data);
        setSubmitResult(response.data);
        setLoading(false);
        setActiveRightTab('result');
@@ -537,7 +538,7 @@ const ProblemPage = () => {
                       <div>
                         <h4 className="font-bold">❌ Error</h4>
                         <div className="mt-4 space-y-2">
-                          {runResult.map((tc, i) => (
+                          {runResult.testCases.map((tc, i) => (
                             <div key={i} className="bg-base-100 p-3 rounded text-xs">
                               <div className="font-mono">
                                 <div><strong>Input:</strong> {tc.stdin}</div>
